@@ -1,4 +1,4 @@
-package io.github.helioanacronista.customerRegistrerFullCliente.rest;
+package io.github.helioanacronista.customerRegistrerFullCliente.rest.Controllers;
 
 import io.github.helioanacronista.customerRegistrerFullCliente.domain.entity.Cliente;
 import io.github.helioanacronista.customerRegistrerFullCliente.domain.repository.ClientesRepository;

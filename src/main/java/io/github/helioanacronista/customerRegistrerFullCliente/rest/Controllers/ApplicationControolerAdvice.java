@@ -1,4 +1,4 @@
-package io.github.helioanacronista.customerRegistrerFullCliente.rest;
+package io.github.helioanacronista.customerRegistrerFullCliente.rest.Controllers;
 
 import io.github.helioanacronista.customerRegistrerFullCliente.rest.exception.ApiErrors;
 import org.springframework.http.HttpStatus;
