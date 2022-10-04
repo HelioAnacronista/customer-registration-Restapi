@@ -1,7 +1,7 @@
-package io.github.helioanacronista.customerRegistrerFullCliente.rest.Controllers;
+package io.github.helioanacronista.customerRegistrerFullCliente.Controllers;
 
-import io.github.helioanacronista.customerRegistrerFullCliente.domain.entity.Cliente;
-import io.github.helioanacronista.customerRegistrerFullCliente.domain.repository.ClientesRepository;
+import io.github.helioanacronista.customerRegistrerFullCliente.domain.entity.Client;
+import io.github.helioanacronista.customerRegistrerFullCliente.domain.repository.ClientsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
@@ -19,21 +19,21 @@ import static org.springframework.http.HttpStatus.*;
 public class ClienteController {
 
     @Autowired
-    private ClientesRepository repositoryCliente;
+    private ClientsRepository repository;
 
     @PostMapping
     @ResponseStatus(CREATED)
-    public Cliente save (@RequestBody @Valid Cliente cliente) {
-        return repositoryCliente.save(cliente);
+    public Client save (@RequestBody @Valid Client cliente) {
+        return repository.save(cliente);
     }
 
     @PutMapping("{id}")
     @ResponseStatus(NO_CONTENT)
-    public void update(@PathVariable Long id, @RequestBody @Valid Cliente clienteAtualizado) {
-        repositoryCliente.findById(id)
+    public void update(@PathVariable Long id, @RequestBody @Valid Client clienteAtualizado) {
+        repository.findById(id)
                 .map(clienteExistente -> {
                     clienteAtualizado.setId(clienteExistente.getId());
-                    repositoryCliente.save(clienteAtualizado);
+                    repository.save(clienteAtualizado);
                     return clienteExistente;
                 } ).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente não encontrado"));
     }
@@ -41,21 +41,21 @@ public class ClienteController {
     @DeleteMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Long id) {
-        repositoryCliente.findById(id)
+        repository.findById(id)
                 .map( cliente -> {
-                    repositoryCliente.delete(cliente);
+                    repository.delete(cliente);
                     return cliente;
                 } )
                 .orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente não encontrado"));
     }
 
     @GetMapping
-    public List<Cliente> find (Cliente filtro) {
+    public List<Client> find (Client filtro) {
         ExampleMatcher matcher = ExampleMatcher
                 .matching()
                 .withIgnoreCase()
                 .withStringMatcher( ExampleMatcher.StringMatcher.CONTAINING );
         Example example = Example.of(filtro, matcher);
-        return repositoryCliente.findAll(example);
+        return repository.findAll(example);
     }
 }

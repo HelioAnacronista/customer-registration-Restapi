@@ -1,6 +1,6 @@
-package io.github.helioanacronista.customerRegistrerFullCliente.rest.Controllers;
+package io.github.helioanacronista.customerRegistrerFullCliente.Config;
 
-import io.github.helioanacronista.customerRegistrerFullCliente.rest.exception.ApiErrors;
+import io.github.helioanacronista.customerRegistrerFullCliente.exception.ApiErrors;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestControllerAdvice
-public class ApplicationControolerAdvice {
+public class ApplicationControllerAdvice {
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)

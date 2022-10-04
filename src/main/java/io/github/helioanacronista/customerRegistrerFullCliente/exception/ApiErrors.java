@@ -1,8 +1,7 @@
-package io.github.helioanacronista.customerRegistrerFullCliente.rest.exception;
+package io.github.helioanacronista.customerRegistrerFullCliente.exception;
 
 import lombok.Getter;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.List;
 
