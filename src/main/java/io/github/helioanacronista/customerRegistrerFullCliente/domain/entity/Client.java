@@ -29,22 +29,22 @@ public class Client {
 
     @Column(nullable = false, length = 150)
     @NotEmpty(message = "{campo.nome.obrigatorio}")
-    private String nome;
+    private String name;
 
     @Column(nullable = false, name = "data_nacimento")
     @JsonFormat(pattern = "dd/MM/yyyy")
     @NotNull(message = "{campo.data.obrigatorio}")
     @Past(message = "{campo.data.futura}")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-    private LocalDate nacimento;
+    private LocalDate birth;
 
     @Column(nullable = false, length = 250)
     @NotEmpty(message = "{campo.endereco.obrigatorio}")
-    private String endereco;
+    private String streetAddress;
 
     @Column(nullable = false, length = 13)
     @NotEmpty(message = "{campo.telefone.obrigatori}")
-    private String telefone;
+    private String phone;
 
     @Column(nullable = false, length = 11)
     @NotEmpty(message = "{campo.cpf.obrigatorio}")
