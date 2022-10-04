@@ -6,11 +6,13 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.br.CPF;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -33,13 +35,14 @@ public class Client {
     @JsonFormat(pattern = "dd/MM/yyyy")
     @NotNull(message = "{campo.data.obrigatorio}")
     @Past(message = "{campo.data.futura}")
-    private Date nacimento;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    private LocalDate nacimento;
 
     @Column(nullable = false, length = 250)
     @NotEmpty(message = "{campo.endereco.obrigatorio}")
     private String endereco;
 
-    @Column(nullable = false, length = 11)
+    @Column(nullable = false, length = 13)
     @NotEmpty(message = "{campo.telefone.obrigatori}")
     private String telefone;
 
